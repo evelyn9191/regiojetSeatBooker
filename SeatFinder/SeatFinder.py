@@ -69,7 +69,7 @@ class SeatFinder:
     departure_field_class = 'col_depart'
 
     def __init__(self, departure, arrival, date, times, tariff='REGULAR', base_url=None, chrome_version=None,
-                 allowed_train_ticket_classes=["low_cost", "standard", "relax"]):
+                 allowed_train_ticket_classes=None):
         """
             Sets the url, driver, nad string[s] which is used to find an empty seat on the webpage
         """
@@ -85,7 +85,7 @@ class SeatFinder:
             self.page_searches.append(one_time)
 
         self.set_parsed_url(departure, arrival, date, tariff, base_url)
-        self.allowed_train_ticket_classes = allowed_train_ticket_classes
+        self.allowed_train_ticket_classes = allowed_train_ticket_classes or ["low_cost", "standard", "relax"]
 
         print(
               "Date: {}\n"
